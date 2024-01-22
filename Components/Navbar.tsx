@@ -1,12 +1,15 @@
 "use client";
 import styled from "styled-components";
+import Link from "next/link";
+import Image from "next/image";
+import logo from "../public/f-logo.png";
 
 const Navbar = () => {
   return (
     <Nav>
       <Navleft>
         <Logo>
-          <Imagecomp src={logoImage} alt="Your Company Logo" />
+          <Imagecomp src={logo} alt="Your Company Logo" />
           <Title href="#">Flowbite</Title>
         </Logo>
         <Links>
