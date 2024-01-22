@@ -56,6 +56,7 @@ const Imagecomponent = styled(Image)`
 const Title = styled(Link)`
   font-weight: bold;
   font-size: 1.5em;
+  color: #3a3838;
 `;
 const Links = styled.div`
   display: space-between;
