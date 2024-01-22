@@ -10,13 +10,13 @@ const Navbar = () => {
       <Navleft>
         <Logo>
           <Imagecomponent src={logo} alt="flowbite logo error" />
-          <Title href="#">Flowbite</Title>
+          <Title href="#">Flowbite-React</Title>
         </Logo>
         <Links>
-          <NavLink href="#">Company</NavLink>
-          <NavLink href="#">MarketPlace</NavLink>
-          <NavLink href="#">Features</NavLink>
-          <NavLink href="#">Team</NavLink>
+          <NavLink href="#">Home</NavLink>
+          <NavLink href="#">About</NavLink>
+          <NavLink href="#">Services</NavLink>
+          <NavLink href="#">Pricing</NavLink>
           <NavLink href="#">Contact</NavLink>
         </Links>
       </Navleft>
@@ -58,7 +58,7 @@ const Title = styled(Link)`
   font-size: 1.5em;
 `;
 const Links = styled.div`
-  display: flex;
+  display: space-between;
   justify-content: center;
   align-items: center;
   @media screen and(min-width:280px) and (max-width: 1000px) {
@@ -86,13 +86,13 @@ const NavRight = styled.div`
 `;
 const Button1 = styled.button`
   border-radius: var(--rounded-lg, 8px);
-  background: var(--primary-700, white);
-  color: var(--white, black);
+  background: var(--primary-700, #d7e02e);
+  color: var(--white, #000000);
 
   font-size: 14px;
   padding: var(--25, 10px) var(--5, 20px);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 150%;
 `;
 const Button2 = styled.button`
@@ -103,7 +103,7 @@ const Button2 = styled.button`
   font-size: 14px;
   padding: var(--25, 10px) var(--5, 20px);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 150%;
 `;
 export default Navbar;
