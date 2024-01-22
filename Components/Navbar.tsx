@@ -9,7 +9,7 @@ const Navbar = () => {
     <Nav>
       <Navleft>
         <Logo>
-          <Imagecomponent src={logo} alt="Your Company Logo" />
+          <Imagecomponent src={logo} alt="flowbite logo error" />
           <Title href="#">Flowbite</Title>
         </Logo>
         <Links>
