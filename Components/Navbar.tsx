@@ -12,14 +12,15 @@ const Navbar = () => {
           <Imagecomponent src={logo} alt="flowbite logo error" />
           <Title href="#">Flowbite-React</Title>
         </Logo>
-        <Links>
-          <NavLink href="#">Home</NavLink>
-          <NavLink href="#">About</NavLink>
-          <NavLink href="#">Services</NavLink>
-          <NavLink href="#">Pricing</NavLink>
-          <NavLink href="#">Contact</NavLink>
-        </Links>
       </Navleft>
+      <Links>
+        <NavLink href="#">Home</NavLink>
+        <NavLink href="#">About</NavLink>
+        <NavLink href="#">Services</NavLink>
+        <NavLink href="#">Pricing</NavLink>
+        <NavLink href="#">Contact</NavLink>
+      </Links>
+
       <NavRight>
         <Button1>Log In</Button1>
         <Button2>Get Started</Button2>
@@ -30,6 +31,7 @@ const Navbar = () => {
 
 const Nav = styled.nav`
   display: flex;
+
   height: 10vh;
   justify-content: space-between;
   align-items: center;
@@ -61,6 +63,7 @@ const Title = styled(Link)`
 const Links = styled.div`
   display: space-between;
   justify-content: center;
+  margin-right: 10px;
   align-items: center;
   @media screen and(min-width:280px) and (max-width: 1000px) {
     display: none;
