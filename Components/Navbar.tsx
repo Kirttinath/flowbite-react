@@ -9,7 +9,7 @@ const Navbar = () => {
     <Nav>
       <Navleft>
         <Logo>
-          <Imagecomp src={logo} alt="Your Company Logo" />
+          <Imagecomponent src={logo} alt="Your Company Logo" />
           <Title href="#">Flowbite</Title>
         </Logo>
         <Links>
@@ -50,7 +50,7 @@ const Logo = styled.div`
   align-items: center;
   gap: 0.5em;
 `;
-const Imagecomp = styled(Image)`
+const Imagecomponent = styled(Image)`
   width: 2em;
 `;
 const Title = styled(Link)`
