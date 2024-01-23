@@ -59,11 +59,10 @@ const Formpage = () => {
               <Tickicon>
                 <Image src={tickicon} alt="Tickicon" />
               </Tickicon>
-              Get Started Quickly
+              Support any buisness model
             </Heading>
             <SubHeading>
-              Integrate with developer-friendly APIs or choose low-code or
-              pre-built solutions.
+              Host code that you don't want to share with the world in private.
             </SubHeading>
           </TextSection>
           <TextSection>
@@ -72,11 +71,11 @@ const Formpage = () => {
               <Tickicon>
                 <Image src={tickicon} alt="Tickicon" />
               </Tickicon>
-              Get Started Quickly
+              Join millions of buisnesses
             </Heading>
             <SubHeading>
-              Integrate with developer-friendly APIs or choose low-code or
-              pre-built solutions.
+              Flowbite is trusted by ambitious startups and enterprises of every
+              size.
             </SubHeading>
           </TextSection>
         </TextArea>
