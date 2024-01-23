@@ -26,7 +26,6 @@ export const Logo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   gap: 0.5em;
 `;
 
