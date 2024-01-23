@@ -209,3 +209,7 @@ export const Signup = styled.a`
   color: blue;
   margin-left: 5px;
 `;
+
+export const span = styled.span`
+  color: red;
+`;

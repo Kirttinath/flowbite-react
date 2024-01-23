@@ -22,13 +22,42 @@ import { Separator, Blank1, Blank2 } from "./styles/Formpage.styled";
 import { Inputs, Label, Input } from "./styles/Formpage.styled";
 import { Remember, Rememberdiv, Input1, Tag } from "./styles/Formpage.styled";
 import { Forgot_Button, Login_Button } from "./styles/Formpage.styled";
-import { Account, Signup } from "./styles/Formpage.styled";
+import { Account, Signup, span } from "./styles/Formpage.styled";
 
 import tickicon from "../../public/check.png";
 import logo from "../../public/f-logo.png";
 import google from "../../public/google.png";
 import github from "../../public/github.png";
+
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z, ZodType } from "zod";
+
+type Inputs = {
+  email: string;
+  password: string;
+};
+const schema: ZodType<Inputs> = z.object({
+  email: z.string().email("Invalid email"),
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .max(20, "Password must be at most 20 characters"),
+});
+
 const Formpage = () => {
+  const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
+    console.log("Its valid", data);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>({
+    resolver: zodResolver(schema),
+  });
+
   return (
     <Formdiv>
       <Formleft>
@@ -81,7 +110,7 @@ const Formpage = () => {
         </TextArea>
       </Formleft>
       <Formright>
-        <Form>
+        <Form onSubmit={handleSubmit(SubmitData)}>
           <FormHeading>Welcome Back</FormHeading>
           <SignUp>
             <Googlebutton>
@@ -105,10 +134,19 @@ const Formpage = () => {
           </Separator>
           <Inputs>
             <Label>Email</Label>
-            <Input type="text" placeholder="name@example.com" />
-
+            <Input
+              type="text"
+              placeholder="name@example.com"
+              {...register("email")}
+            />
+            {errors.email && <span>{errors.email.message}</span>}
             <Label>Password</Label>
-            <Input type="password" placeholder="*******" />
+            <Input
+              type="password"
+              placeholder="*******"
+              {...register("password")}
+            />
+            {errors.password && <span>{errors.password.message}</span>}
           </Inputs>
           <Tag>
             <Rememberdiv>
