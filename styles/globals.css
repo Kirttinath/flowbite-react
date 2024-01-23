@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@media screen {
+  .container {
+    padding: 0 3.2rem;
+  }
+}

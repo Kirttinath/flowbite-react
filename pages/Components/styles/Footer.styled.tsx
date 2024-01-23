@@ -9,6 +9,11 @@ export const Footerdiv = styled.div`
   color: gray;
   position: absolute;
   width: fit-content;
+  @media screen {
+    .container {
+      padding: 0 3.2rem;
+    }
+  }
 `;
 
 export const Footleft = styled.div`

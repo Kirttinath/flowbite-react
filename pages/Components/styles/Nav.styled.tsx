@@ -36,9 +36,6 @@ export const Links = styled.div`
   justify-content: center;
   margin-right: 10px;
   align-items: center;
-  @media screen and(min-width:280px) and (max-width: 1000px) {
-    display: none;
-  }
 `;
 export const NavLink = styled.a`
   margin: 0 10px;
