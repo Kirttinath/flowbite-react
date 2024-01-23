@@ -131,10 +131,17 @@ export const Separator = styled.div`
   margin-top: 0.5em;
 `;
 
-export const Blank = styled.div`
-  border: 1px solid black;
+export const Blank1 = styled.div`
+  border: 1px solid gray;
+  width: 10em;
+  margin-right: 5px;
 `;
 
+export const Blank2 = styled.div`
+  border: 1px solid gray;
+  width: 10em;
+  margin-left: 5px;
+`;
 export const Inputs = styled.div``;
 
 export const Label = styled.div`
@@ -157,7 +164,7 @@ export const Rememberdiv = styled.div`
 `;
 export const Input1 = styled.input`
   border-radius: 2px;
-  margin-top: 0.5em;
+  margin-top: 0.1em;
 `;
 export const Remember = styled.p``;
 
@@ -200,4 +207,5 @@ export const Account = styled.div`
 
 export const Signup = styled.a`
   color: blue;
+  margin-left: 5px;
 `;

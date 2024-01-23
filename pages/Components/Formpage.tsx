@@ -18,7 +18,7 @@ import {
 import { Formright, Form, FormHeading } from "./styles/Formpage.styled";
 import { SignUp, Googlebutton, Google } from "./styles/Formpage.styled";
 import { Github_button, Github } from "./styles/Formpage.styled";
-import { Separator, Blank } from "./styles/Formpage.styled";
+import { Separator, Blank1, Blank2 } from "./styles/Formpage.styled";
 import { Inputs, Label, Input } from "./styles/Formpage.styled";
 import { Remember, Rememberdiv, Input1, Tag } from "./styles/Formpage.styled";
 import { Forgot_Button, Login_Button } from "./styles/Formpage.styled";
@@ -99,8 +99,9 @@ const Formpage = () => {
           </SignUp>
           <Separator>
             <br />
-            <p>or</p>
-            <Blank></Blank>
+            <Blank1 />
+            or
+            <Blank2 />
           </Separator>
           <Inputs>
             <Label>Email</Label>
@@ -119,7 +120,7 @@ const Formpage = () => {
           <Login_Button>Create account</Login_Button>
 
           <Account>
-            Don't have an account, yet? <Signup href="#">Sign up</Signup>{" "}
+            Don't have an account, yet ? <Signup href="#">Sign up</Signup>{" "}
           </Account>
         </Form>
       </Formright>
