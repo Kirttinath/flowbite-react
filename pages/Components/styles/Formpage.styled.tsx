@@ -66,7 +66,7 @@ export const SubHeading = styled.h2`
 
 export const Formright = styled.div`
   padding-top: 2em;
-  height: 100%;
+  height: 115%;
 `;
 
 export const Form = styled.form`
