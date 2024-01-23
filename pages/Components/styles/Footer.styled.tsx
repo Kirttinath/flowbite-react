@@ -1,21 +1,24 @@
 import styled from "styled-components";
 
 export const Footerdiv = styled.div`
-  height: 20vh;
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 100px;
+  padding: 10px;
   color: gray;
   position: absolute;
+  width: fit-content;
 `;
 
 export const Footleft = styled.div`
-  display: 100px;
+  display: flex;
+  margin-left: 40px;
 `;
 export const Footright = styled.div`
+  margin-left: 970px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5em;
+  gap: 20px;
+  width: 20px;
+  height: 20px;
 `;

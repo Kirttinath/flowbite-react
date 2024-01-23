@@ -4,12 +4,10 @@ import Link from "next/link";
 
 export const Nav = styled.nav`
   display: flex;
-
-  height: 10vh;
+  height: 15vh;
   justify-content: space-between;
   align-items: center;
   padding: 0em 5em;
-
   background-color: #ffffff;
 `;
 

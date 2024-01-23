@@ -13,6 +13,7 @@ export const Formdiv = styled.div`
 
 export const Formleft = styled.div`
   height: 100%;
+  margin-top: 70px;
   padding: 4em 0em;
 `;
 export const Images = styled.div`
