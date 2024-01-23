@@ -3,7 +3,7 @@ import Image from "next/image";
 import facebbok from "../../public/facebook.png";
 import twitter from "../../public/twitter.png";
 import dribble from "../../public/dribble.png";
-import github from "../../public/githubgray.png";
+import github from "../../public/githubb.png";
 
 const Footer = () => {
   return (
