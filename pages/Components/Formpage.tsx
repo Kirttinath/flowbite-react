@@ -87,7 +87,6 @@ const Formpage = () => {
           <SignUp>
             <Googlebutton>
               <Google>
-                {" "}
                 <Image src={google} alt="Google icon" />
               </Google>
               Sign up with Google
