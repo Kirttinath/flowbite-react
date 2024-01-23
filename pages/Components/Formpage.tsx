@@ -119,7 +119,7 @@ const Formpage = () => {
           <Login_Button>Create account</Login_Button>
 
           <Account>
-            Don't have an accoutn yet? <Signup href="#">Sign up</Signup>{" "}
+            Don't have an account, yet? <Signup href="#">Sign up</Signup>{" "}
           </Account>
         </Form>
       </Formright>
