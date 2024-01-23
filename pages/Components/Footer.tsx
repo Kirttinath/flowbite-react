@@ -3,12 +3,12 @@ import Image from "next/image";
 import facebbok from "../../public/facebook.png";
 import twitter from "../../public/twitter.png";
 import dribble from "../../public/dribble.png";
-import github from "../../public/githubb.png";
+import github from "../../public/github.png";
 
 const Footer = () => {
   return (
     <Footerdiv>
-      <Footleft>© 2021 Flowbite, LLC. All rights reserved.</Footleft>
+      <Footleft>© 2024 Flowbite, LLC. All rights reserved.</Footleft>
       <Footright>
         <Image src={facebbok} alt="Facebook icon" />
         <Image src={twitter} alt="Twitter Icon" />
