@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -52,13 +53,20 @@ const schema = z.object({
 });
 
 const Formpage = () => {
+  const session = useSession();
+  console.log(session);
   // const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   // const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {};
   const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
     console.log(data);
     if (data.email === "K@gmail.com" && data.password === "kirtti") {
-      signIn(data.email);
+      console.log("Authenticated User");
+      // signIn(data.email);
     } else throw new Error("Invalid Request");
+  };
+
+  const googleclick = () => {
+    signIn();
   };
 
   const {
@@ -124,7 +132,7 @@ const Formpage = () => {
         <Form onSubmit={handleSubmit(SubmitData)}>
           <FormHeading>Welcome Back</FormHeading>
           <SignUp>
-            <Googlebutton>
+            <Googlebutton onClick={googleclick}>
               <Google>
                 <Image src={google} alt="Google icon" />
               </Google>
