@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -57,6 +56,9 @@ const Formpage = () => {
   // const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {};
   const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
     console.log(data);
+    if (data.email === "K@gmail.com" && data.password === "kirtti") {
+      signIn(data.email);
+    } else throw new Error("Invalid Request");
   };
 
   const {
@@ -170,12 +172,14 @@ const Formpage = () => {
               <Input1 type="checkbox" />
               <Remember> Remember Me</Remember>
             </Rememberdiv>
-            <Forgot_Button href="#">Forgot Password?</Forgot_Button>
+            <Forgot_Button href="/forgotpassword">
+              Forgot Password?
+            </Forgot_Button>
           </Tag>
           <Login_Button>Create account</Login_Button>
 
           <Account>
-            Don't have an account, yet ? <Signup href="#">Sign up</Signup>
+            Don't have an account, yet ? <Signup href="/Signup">Sign up</Signup>
             {""}
           </Account>
         </Form>

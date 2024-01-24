@@ -8,23 +8,24 @@ import {
   unauthenticatedStyle,
 } from "./Components/styles/Signin.styled";
 
-type Props = {};
+type Props = {
+  email: string;
+  password: string;
+};
 
 const Signin = (props: Props) => {
   const { status, data } = useSession();
   console.log(status, data);
 
-  useEffect(() => {
-    if (status === "unauthenticated") Router.replace("/");
-  }, [status]);
-  if (status === "authenticated")
+  if (status === "unauthenticated") throw new Error("Invalid Credentials");
+  else if (status === "authenticated") {
     return (
       <div style={authenticatedStyle}>
-        Authenticated User{JSON.stringify(data.user, null, 2)}
+        Authenticated User{JSON.stringify(data.user?.email, null, 2)}
       </div>
     );
-
-  return <div>Loading...</div>;
+    Router.push("/Signin");
+  } else return <div>Loading...</div>;
 };
 
 export default Signin;
