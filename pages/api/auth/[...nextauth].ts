@@ -16,14 +16,14 @@ const authOptions: NextAuthOptions = {
           password: string;
         };
         if (email !== "K@gmail.com" || password !== "kirtti") {
-          return null;
+          throw new Error("Credential Error");
         }
-        return { id: 1, name: "Kojha", email: "Kojha@gmail.com" };
+        return { name: "Kirtti", password: "kirtti", email: "K@gmail.com" };
       },
     }),
   ],
   pages: {
-    signIn: "/Signin",
+    signIn: "/",
   },
 };
 
