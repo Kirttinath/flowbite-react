@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -32,6 +33,8 @@ import github from "../../public/github.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z, ZodType } from "zod";
+import { log } from "console";
+import { signIn, useSession } from "next-auth/react";
 
 type Inputs = {
   email: string;
@@ -45,9 +48,14 @@ const schema: ZodType<Inputs> = z.object({
     .max(20, "Password must be at most 20 characters"),
 });
 
-const Formpage = () => {
+const Formpage: React.FC = () => {
+  const { data: session } = useSession();
+
   const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
-    console.log("Its valid", data);
+    const handleGoogleSignIn = async () => {
+      await signIn("google");
+    };
+    handleGoogleSignIn();
   };
 
   const {
@@ -143,7 +151,7 @@ const Formpage = () => {
             <Label>Password</Label>
             <Input
               type="password"
-              placeholder="*******"
+              placeholder="Password"
               {...register("password")}
             />
             {errors.password && <span>{errors.password.message}</span>}
