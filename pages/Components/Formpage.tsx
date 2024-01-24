@@ -32,9 +32,12 @@ import github from "../../public/github.png";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z, ZodType } from "zod";
+import { string, z, ZodType } from "zod";
 import { log } from "console";
-import { signIn, useSession } from "next-auth/react";
+
+import { useState, useEffect, FormEventHandler } from "react";
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import Router from "next/router";
 
 type Inputs = {
   email: string;
@@ -48,19 +51,24 @@ const schema: ZodType<Inputs> = z.object({
     .max(20, "Password must be at most 20 characters"),
 });
 
-const Formpage: React.FC = () => {
-  const { data: session } = useSession();
-
+const Formpage = () => {
+  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    const res = await signIn("credentials", {
+      email: userInfo.email,
+      password: userInfo.password,
+      redirect: false,
+    });
+    console.log(res);
+    Router.push("/Signin");
+  };
   const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
-    const handleGoogleSignIn = async () => {
-      await signIn("google");
-    };
-    handleGoogleSignIn();
+    console.log(data);
   };
 
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({
     resolver: zodResolver(schema),
@@ -118,7 +126,7 @@ const Formpage: React.FC = () => {
         </TextArea>
       </Formleft>
       <Formright>
-        <Form onSubmit={handleSubmit(SubmitData)}>
+        <Form onSubmit={handleSubmit}>
           <FormHeading>Welcome Back</FormHeading>
           <SignUp>
             <Googlebutton>
@@ -144,15 +152,23 @@ const Formpage: React.FC = () => {
             <Label>Email</Label>
             <Input
               type="text"
+              value={userInfo.email}
+              onChange={({ target }) => {
+                setUserInfo({ ...userInfo, email: target.value });
+              }}
               placeholder="name@example.com"
-              {...register("email")}
+              // {...register("email")}
             />
             {errors.email && <span>{errors.email.message}</span>}
             <Label>Password</Label>
             <Input
               type="password"
+              value={userInfo.password}
+              onChange={({ target }) => {
+                setUserInfo({ ...userInfo, password: target.value });
+              }}
               placeholder="Password"
-              {...register("password")}
+              // {...register("password")}
             />
             {errors.password && <span>{errors.password.message}</span>}
           </Inputs>
