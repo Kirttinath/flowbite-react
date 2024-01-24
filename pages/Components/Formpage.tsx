@@ -38,12 +38,13 @@ import { log } from "console";
 import { useState, useEffect, FormEventHandler } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import Router from "next/router";
+import styled from "styled-components";
 
 type Inputs = {
   email: string;
   password: string;
 };
-const schema: ZodType<Inputs> = z.object({
+const schema = z.object({
   email: z.string().email("Invalid email"),
   password: z
     .string()
@@ -52,18 +53,10 @@ const schema: ZodType<Inputs> = z.object({
 });
 
 const Formpage = () => {
-  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
+  // const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   // const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {};
-  const SubmitData: SubmitHandler<Inputs> = async (data: Inputs) => {
+  const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
     console.log(data);
-    // e.preventDefault();
-    const res = await signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    });
-    console.log(res);
-    // Router.push("/Signin");
   };
 
   const {
@@ -159,7 +152,7 @@ const Formpage = () => {
               placeholder="name@example.com"
               {...register("email")}
             />
-            {errors.email && <div style={spanerr}>{errors.email.message}</div>}
+            {errors.email && <span>{errors.email.message}</span>}
             <Label>Password</Label>
             <Input
               type="password"
@@ -170,9 +163,7 @@ const Formpage = () => {
               placeholder="Password"
               {...register("password")}
             />
-            {errors.password && (
-              <div style={spanerr}>{errors.password.message}</div>
-            )}
+            {errors.password && <span>{errors.password.message}</span>}
           </Inputs>
           <Tag>
             <Rememberdiv>
@@ -184,7 +175,8 @@ const Formpage = () => {
           <Login_Button>Create account</Login_Button>
 
           <Account>
-            Don't have an account, yet ? <Signup href="#">Sign up</Signup>{" "}
+            Don't have an account, yet ? <Signup href="#">Sign up</Signup>
+            {""}
           </Account>
         </Form>
       </Formright>
