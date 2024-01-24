@@ -23,8 +23,8 @@ import { Separator, Blank1, Blank2 } from "./styles/Formpage.styled";
 import { Inputs, Label, Input } from "./styles/Formpage.styled";
 import { Remember, Rememberdiv, Input1, Tag } from "./styles/Formpage.styled";
 import { Forgot_Button, Login_Button } from "./styles/Formpage.styled";
-import { Account, Signup, span } from "./styles/Formpage.styled";
-
+import { Account, Signup } from "./styles/Formpage.styled";
+import { spanerr } from "./styles/Formpage.styled";
 import tickicon from "../../public/check.png";
 import logo from "../../public/f-logo.png";
 import google from "../../public/google.png";
@@ -53,23 +53,23 @@ const schema: ZodType<Inputs> = z.object({
 
 const Formpage = () => {
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
+  // const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {};
+  const SubmitData: SubmitHandler<Inputs> = async (data: Inputs) => {
+    console.log(data);
+    // e.preventDefault();
     const res = await signIn("credentials", {
-      email: userInfo.email,
-      password: userInfo.password,
+      email: data.email,
+      password: data.password,
       redirect: false,
     });
     console.log(res);
-    Router.push("/Signin");
-  };
-  const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
-    console.log(data);
+    // Router.push("/Signin");
   };
 
   const {
     register,
     formState: { errors },
+    handleSubmit,
   } = useForm<Inputs>({
     resolver: zodResolver(schema),
   });
@@ -126,7 +126,7 @@ const Formpage = () => {
         </TextArea>
       </Formleft>
       <Formright>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit(SubmitData)}>
           <FormHeading>Welcome Back</FormHeading>
           <SignUp>
             <Googlebutton>
@@ -152,25 +152,27 @@ const Formpage = () => {
             <Label>Email</Label>
             <Input
               type="text"
-              value={userInfo.email}
-              onChange={({ target }) => {
-                setUserInfo({ ...userInfo, email: target.value });
-              }}
+              // value={userInfo.email}
+              // onChange={({ target }) => {
+              //   setUserInfo({ ...userInfo, email: target.value });
+              // }}
               placeholder="name@example.com"
-              // {...register("email")}
+              {...register("email")}
             />
-            {errors.email && <span>{errors.email.message}</span>}
+            {errors.email && <div style={spanerr}>{errors.email.message}</div>}
             <Label>Password</Label>
             <Input
               type="password"
-              value={userInfo.password}
-              onChange={({ target }) => {
-                setUserInfo({ ...userInfo, password: target.value });
-              }}
+              // value={.password}
+              // onChange={({ target }) => {
+              //   setUserInfo({ ...userInfo, password: target.value });
+              // }}
               placeholder="Password"
-              // {...register("password")}
+              {...register("password")}
             />
-            {errors.password && <span>{errors.password.message}</span>}
+            {errors.password && (
+              <div style={spanerr}>{errors.password.message}</div>
+            )}
           </Inputs>
           <Tag>
             <Rememberdiv>

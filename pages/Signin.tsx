@@ -12,6 +12,8 @@ type Props = {};
 
 const Signin = (props: Props) => {
   const { status, data } = useSession();
+  console.log(status, data);
+
   useEffect(() => {
     if (status === "unauthenticated") Router.replace("/");
   }, [status]);

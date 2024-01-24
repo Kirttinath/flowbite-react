@@ -210,6 +210,6 @@ export const Signup = styled.a`
   margin-left: 5px;
 `;
 
-export const span = styled.span`
+export const spanerr: React.CSSProperties = styled.span`
   color: red;
 `;

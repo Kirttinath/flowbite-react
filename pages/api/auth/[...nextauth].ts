@@ -15,10 +15,9 @@ const authOptions: NextAuthOptions = {
           email: string;
           password: string;
         };
-        if (email !== "K@gmail.com" || password !== "kirtti") {
-          throw new Error("Credential Error");
-        }
-        return { name: "Kirtti", password: "kirtti", email: "K@gmail.com" };
+        if (email === "K@gmail.com" && password === "kirtti") {
+          return true;
+        } else false;
       },
     }),
   ],
