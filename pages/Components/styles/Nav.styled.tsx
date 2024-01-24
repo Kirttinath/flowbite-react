@@ -76,3 +76,14 @@ export const Button2 = styled.button`
   font-weight: 600;
   line-height: 150%;
 `;
+export const Button3 = styled.button`
+  border-radius: var(--rounded-lg, 8px);
+  background: var(--primary-700, #1a56db);
+  color: var(--white, #fff);
+
+  font-size: 14px;
+  padding: var(--25, 10px) var(--5, 20px);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+`;

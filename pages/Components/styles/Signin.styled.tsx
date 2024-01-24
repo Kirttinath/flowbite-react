@@ -18,3 +18,9 @@ export const authenticatedStyle: React.CSSProperties = {
 export const unauthenticatedStyle: React.CSSProperties = styled.div`
   color: red;
 `;
+
+export const divlogin: React.CSSProperties = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

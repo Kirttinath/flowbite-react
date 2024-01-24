@@ -55,7 +55,6 @@ const schema = z.object({
 const Formpage = () => {
   const session = useSession();
   console.log("Session", session);
-  const router = useRouter();
 
   // const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   // const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {};
@@ -140,7 +139,7 @@ const Formpage = () => {
             </TextArea>
           </Formleft>
           <Formright>
-            <Form>
+            <Form onSubmit={googleSignIn}>
               <FormHeading>Welcome Back</FormHeading>
               <SignUp>
                 <Googlebutton onClick={googleSignIn}>
