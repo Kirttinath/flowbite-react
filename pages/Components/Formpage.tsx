@@ -41,6 +41,7 @@ import { Router, useRouter } from "next/router";
 // import Signin from "../Signin";
 // import { SubmitData } from "../Signin";
 import { log } from "console";
+import { useGoogleLogin } from "@react-oauth/google";
 
 type Inputs = {
   email: string;
@@ -55,8 +56,15 @@ const schema = z.object({
 });
 
 const Formpage = () => {
+  const login = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      console.log(tokenResponse);
+      router.push("/Signin");
+    },
+  });
+
   const router = useRouter();
-  const session = useSession();
+  // const session = useSession();
   /* The line `console.log("Session", session);` is logging the value of the `session` variable to the
   console. It is useful for debugging purposes to see the current value of the `session` variable. */
   // console.log("Session", session);
@@ -88,194 +96,194 @@ const Formpage = () => {
     resolver: zodResolver(schema),
   });
 
-  if (session?.data === null) {
-    return (
-      <>
-        <Formdiv>
-          <Formleft>
-            <Images>
-              <Logo>
-                <Imagesrc src={logo} alt="Flowbite logo" />
-                <Title>Flowbite</Title>
-              </Logo>
-            </Images>
+  // if (session?.data === null) {
+  return (
+    <>
+      <Formdiv>
+        <Formleft>
+          <Images>
+            <Logo>
+              <Imagesrc src={logo} alt="Flowbite logo" />
+              <Title>Flowbite</Title>
+            </Logo>
+          </Images>
 
-            <TextArea>
-              <TextSection>
-                <Heading>
-                  {" "}
-                  <Tickicon>
-                    <Image src={tickicon} alt="Tickicon" />
-                  </Tickicon>
-                  Get started quickly{" "}
-                </Heading>
-                <SubHeading>
-                  Integrate with developer-friendly APIs or choose low-code or
-                  pre-built solutions.
-                </SubHeading>
-              </TextSection>
-              <TextSection>
-                <Heading>
-                  {" "}
-                  <Tickicon>
-                    <Image src={tickicon} alt="Tickicon" />
-                  </Tickicon>
-                  Support any buisness model
-                </Heading>
-                <SubHeading>
-                  Host code that you don't want to share with the world in
-                  private.
-                </SubHeading>
-              </TextSection>
-              <TextSection>
-                <Heading>
-                  {" "}
-                  <Tickicon>
-                    <Image src={tickicon} alt="Tickicon" />
-                  </Tickicon>
-                  Join millions of buisnesses
-                </Heading>
-                <SubHeading>
-                  Flowbite is trusted by ambitious startups and enterprises of
-                  every size.
-                </SubHeading>
-              </TextSection>
-            </TextArea>
-          </Formleft>
-          <Formright>
-            <Form onSubmit={handleSubmit(SubmitData)}>
-              <FormHeading>Welcome Back</FormHeading>
-              <SignUp>
-                <Googlebutton onClick={handleSubmit(SubmitData)}>
-                  <Google>
-                    <Image src={google} alt="Google icon" />
-                  </Google>
-                  Sign up with Google
-                </Googlebutton>
-                <Github_button onClick={handleSubmit(SubmitData)}>
-                  <Github>
-                    <Image src={github} alt="Git icon" />
-                  </Github>
-                  Sign up with Github
-                </Github_button>
-              </SignUp>
-              <Separator>
-                <br />
-                <Blank1 />
-                or
-                <Blank2 />
-              </Separator>
-              <Inputs>
-                <Label>Email</Label>
-                <Input
-                  type="text"
-                  // value={userInfo.email}
-                  // onChange={({ target }) => {
-                  //   setUserInfo({ ...userInfo, email: target.value });
-                  // }}
-                  placeholder="name@example.com"
-                  {...register("email")}
-                />
-                {errors.email && (
-                  <span className="flex text-red-600">
-                    {errors.email.message}
-                  </span>
-                )}
-                <Label>Password</Label>
-                <Input
-                  type="password"
-                  // value={.password}
-                  // onChange={({ target }) => {
-                  //   setUserInfo({ ...userInfo, password: target.value });
-                  // }}
-                  placeholder="Password"
-                  {...register("password")}
-                />
-                {errors.password && (
-                  <span className="flex text-red-600">
-                    {errors.password.message}
-                  </span>
-                )}
-              </Inputs>
-              <Tag>
-                <Rememberdiv>
-                  <Input1 type="checkbox" />
-                  <Remember> Remember Me</Remember>
-                </Rememberdiv>
-                <Forgot_Button href="/forgotpassword">
-                  Forgot Password?
-                </Forgot_Button>
-              </Tag>
-              <Login_Button>Create account</Login_Button>
+          <TextArea>
+            <TextSection>
+              <Heading>
+                {" "}
+                <Tickicon>
+                  <Image src={tickicon} alt="Tickicon" />
+                </Tickicon>
+                Get started quickly{" "}
+              </Heading>
+              <SubHeading>
+                Integrate with developer-friendly APIs or choose low-code or
+                pre-built solutions.
+              </SubHeading>
+            </TextSection>
+            <TextSection>
+              <Heading>
+                {" "}
+                <Tickicon>
+                  <Image src={tickicon} alt="Tickicon" />
+                </Tickicon>
+                Support any buisness model
+              </Heading>
+              <SubHeading>
+                Host code that you don't want to share with the world in
+                private.
+              </SubHeading>
+            </TextSection>
+            <TextSection>
+              <Heading>
+                {" "}
+                <Tickicon>
+                  <Image src={tickicon} alt="Tickicon" />
+                </Tickicon>
+                Join millions of buisnesses
+              </Heading>
+              <SubHeading>
+                Flowbite is trusted by ambitious startups and enterprises of
+                every size.
+              </SubHeading>
+            </TextSection>
+          </TextArea>
+        </Formleft>
+        <Formright>
+          <Form onSubmit={handleSubmit(SubmitData)}>
+            <FormHeading>Welcome Back</FormHeading>
+            <SignUp>
+              <Googlebutton onClick={() => login()}>
+                <Google>
+                  <Image src={google} alt="Google icon" />
+                </Google>
+                Sign up with Google
+              </Googlebutton>
+              <Github_button>
+                <Github>
+                  <Image src={github} alt="Git icon" />
+                </Github>
+                Sign up with Github
+              </Github_button>
+            </SignUp>
+            <Separator>
+              <br />
+              <Blank1 />
+              or
+              <Blank2 />
+            </Separator>
+            <Inputs>
+              <Label>Email</Label>
+              <Input
+                type="text"
+                // value={userInfo.email}
+                // onChange={({ target }) => {
+                //   setUserInfo({ ...userInfo, email: target.value });
+                // }}
+                placeholder="name@example.com"
+                {...register("email")}
+              />
+              {errors.email && (
+                <span className="flex text-red-600">
+                  {errors.email.message}
+                </span>
+              )}
+              <Label>Password</Label>
+              <Input
+                type="password"
+                // value={.password}
+                // onChange={({ target }) => {
+                //   setUserInfo({ ...userInfo, password: target.value });
+                // }}
+                placeholder="Password"
+                {...register("password")}
+              />
+              {errors.password && (
+                <span className="flex text-red-600">
+                  {errors.password.message}
+                </span>
+              )}
+            </Inputs>
+            <Tag>
+              <Rememberdiv>
+                <Input1 type="checkbox" />
+                <Remember> Remember Me</Remember>
+              </Rememberdiv>
+              <Forgot_Button href="/forgotpassword">
+                Forgot Password?
+              </Forgot_Button>
+            </Tag>
+            <Login_Button>Create account</Login_Button>
 
-              <Account>
-                Don't have an account, yet ?{" "}
-                <Signup href="/Signup">Sign up</Signup>
-                {""}
-              </Account>
-            </Form>
-          </Formright>
-        </Formdiv>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <Formdiv>
-          <Formleft>
-            <Images>
-              <Logo>
-                <Imagesrc src={logo} alt="Flowbite logo" />
-                <Title>Flowbite</Title>
-              </Logo>
-            </Images>
+            <Account>
+              Don't have an account, yet ?{" "}
+              <Signup href="/Signup">Sign up</Signup>
+              {""}
+            </Account>
+          </Form>
+        </Formright>
+      </Formdiv>
+    </>
+  );
+  // } else {
+  //   return (
+  //     <>
+  //       <Formdiv>
+  //         <Formleft>
+  //           <Images>
+  //             <Logo>
+  //               <Imagesrc src={logo} alt="Flowbite logo" />
+  //               <Title>Flowbite</Title>
+  //             </Logo>
+  //           </Images>
 
-            <TextArea>
-              <TextSection>
-                <Heading>
-                  {" "}
-                  <Tickicon>
-                    <Image src={tickicon} alt="Tickicon" />
-                  </Tickicon>
-                  Get started quickly{" "}
-                </Heading>
-                <SubHeading>
-                  Integrate with developer-friendly APIs or choose low-code or
-                  pre-built solutions.
-                </SubHeading>
-              </TextSection>
-              <TextSection>
-                <Heading>
-                  {" "}
-                  <Tickicon>
-                    <Image src={tickicon} alt="Tickicon" />
-                  </Tickicon>
-                  Support any buisness model
-                </Heading>
-                <SubHeading>
-                  Host code that you don't want to share with the world in
-                  private.
-                </SubHeading>
-              </TextSection>
-              <TextSection>
-                <Heading>
-                  {" "}
-                  <Tickicon>
-                    <Image src={tickicon} alt="Tickicon" />
-                  </Tickicon>
-                  Join millions of buisnesses
-                </Heading>
-                <SubHeading>
-                  Flowbite is trusted by ambitious startups and enterprises of
-                  every size.
-                </SubHeading>
-              </TextSection>
-            </TextArea>
-          </Formleft>
-          <Formright>{/* <Signin /> */}</Formright>
-        </Formdiv>
-      </>
-    );
-  }
+  //           <TextArea>
+  //             <TextSection>
+  //               <Heading>
+  //                 {" "}
+  //                 <Tickicon>
+  //                   <Image src={tickicon} alt="Tickicon" />
+  //                 </Tickicon>
+  //                 Get started quickly{" "}
+  //               </Heading>
+  //               <SubHeading>
+  //                 Integrate with developer-friendly APIs or choose low-code or
+  //                 pre-built solutions.
+  //               </SubHeading>
+  //             </TextSection>
+  //             <TextSection>
+  //               <Heading>
+  //                 {" "}
+  //                 <Tickicon>
+  //                   <Image src={tickicon} alt="Tickicon" />
+  //                 </Tickicon>
+  //                 Support any buisness model
+  //               </Heading>
+  //               <SubHeading>
+  //                 Host code that you don't want to share with the world in
+  //                 private.
+  //               </SubHeading>
+  //             </TextSection>
+  //             <TextSection>
+  //               <Heading>
+  //                 {" "}
+  //                 <Tickicon>
+  //                   <Image src={tickicon} alt="Tickicon" />
+  //                 </Tickicon>
+  //                 Join millions of buisnesses
+  //               </Heading>
+  //               <SubHeading>
+  //                 Flowbite is trusted by ambitious startups and enterprises of
+  //                 every size.
+  //               </SubHeading>
+  //             </TextSection>
+  //           </TextArea>
+  //         </Formleft>
+  //         <Formright>{/* <Signin /> */}</Formright>
+  //       </Formdiv>
+  //     </>
+  //   );
+  // }
 };
 export default Formpage;
