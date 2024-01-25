@@ -38,7 +38,9 @@ import { string, z, ZodType } from "zod";
 // import { useState, useEffect, FormEventHandler } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { Router, useRouter } from "next/router";
-import Signin from "../Signin";
+// import Signin from "../Signin";
+// import { SubmitData } from "../Signin";
+import { log } from "console";
 
 type Inputs = {
   email: string;
@@ -53,17 +55,18 @@ const schema = z.object({
 });
 
 const Formpage = () => {
+  const router = useRouter();
   const session = useSession();
   console.log("Session", session);
-
-  // const [userInfo, setUserInfo] = useState({ email: "", password: "" });
-  // const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {};
 
   const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
     if (data.email === "K@gmail.com" && data.password === "kirtti") {
       console.log("Authenticated User");
+      router.push("/Signin");
       console.log(data);
-    } else throw new Error("Invalid Request");
+    } else {
+      console.log("Unauthenticated User");
+    }
   };
 
   // const googleSignIn = () => {
@@ -140,13 +143,13 @@ const Formpage = () => {
             <Form onSubmit={handleSubmit(SubmitData)}>
               <FormHeading>Welcome Back</FormHeading>
               <SignUp>
-                <Googlebutton>
+                <Googlebutton onClick={handleSubmit(SubmitData)}>
                   <Google>
                     <Image src={google} alt="Google icon" />
                   </Google>
                   Sign up with Google
                 </Googlebutton>
-                <Github_button>
+                <Github_button onClick={handleSubmit(SubmitData)}>
                   <Github>
                     <Image src={github} alt="Git icon" />
                   </Github>
@@ -258,9 +261,7 @@ const Formpage = () => {
               </TextSection>
             </TextArea>
           </Formleft>
-          <Formright>
-            <Signin />
-          </Formright>
+          <Formright>{/* <Signin /> */}</Formright>
         </Formdiv>
       </>
     );

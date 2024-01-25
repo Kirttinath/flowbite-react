@@ -10,7 +10,7 @@ export const Footerdiv = styled.div`
   flex-direction: row;
   position: absolute;
   width: fit-content;
-  @media (max-width: 768px) {
+  @media screen and(min-width:280px) and (max-width: 1000px) {
     flex-direction: column;
   }
 `;
@@ -18,6 +18,9 @@ export const Footerdiv = styled.div`
 export const Footleft = styled.div`
   display: flex;
   margin-left: 40px;
+  @media screen and(min-width:280px) and (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 export const Footright = styled.div`
   margin-left: 970px;
@@ -27,5 +30,8 @@ export const Footright = styled.div`
   height: 20px;
   &:hover {
     cursor: pointer;
+  }
+  @media screen and(min-width:280px) and (max-width: 1000px) {
+    flex-direction: column;
   }
 `;

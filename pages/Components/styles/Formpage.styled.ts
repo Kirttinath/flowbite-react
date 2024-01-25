@@ -41,9 +41,6 @@ export const TextArea = styled.div``;
 export const TextSection = styled.div`
   width: auto;
   margin-top: 1em;
-  @media screen and(min-width:280px) and (max-width: 1000px) {
-    width: auto;
-  }
 `;
 
 export const Heading = styled.h1`

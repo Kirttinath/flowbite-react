@@ -9,11 +9,14 @@ export const Nav = styled.nav`
   align-items: center;
   padding: 0em 5em;
   background-color: #ffffff;
+  @media screen and(min-width:280px) and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const Navleft = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 50px;
 `;
