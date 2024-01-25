@@ -57,7 +57,9 @@ const schema = z.object({
 const Formpage = () => {
   const router = useRouter();
   const session = useSession();
-  console.log("Session", session);
+  /* The line `console.log("Session", session);` is logging the value of the `session` variable to the
+  console. It is useful for debugging purposes to see the current value of the `session` variable. */
+  // console.log("Session", session);
 
   const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
     if (data.email === "K@gmail.com" && data.password === "kirtti") {
@@ -66,6 +68,7 @@ const Formpage = () => {
       console.log(data);
     } else {
       console.log("Unauthenticated User");
+      console.log(data);
     }
   };
 
@@ -173,7 +176,11 @@ const Formpage = () => {
                   placeholder="name@example.com"
                   {...register("email")}
                 />
-                {errors.email && <span>{errors.email.message}</span>}
+                {errors.email && (
+                  <span className="flex text-red-600">
+                    {errors.email.message}
+                  </span>
+                )}
                 <Label>Password</Label>
                 <Input
                   type="password"
@@ -184,7 +191,11 @@ const Formpage = () => {
                   placeholder="Password"
                   {...register("password")}
                 />
-                {errors.password && <span>{errors.password.message}</span>}
+                {errors.password && (
+                  <span className="flex text-red-600">
+                    {errors.password.message}
+                  </span>
+                )}
               </Inputs>
               <Tag>
                 <Rememberdiv>

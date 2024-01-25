@@ -69,7 +69,7 @@ export const Form = styled.form`
   border-radius: 8px;
   box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
   padding: 1.5em;
-  box-sizing: border-box;
+  box-sizing: initial;
 `;
 
 export const FormHeading = styled.div`
@@ -204,8 +204,4 @@ export const Account = styled.div`
 export const Signup = styled.a`
   color: blue;
   margin-left: 5px;
-`;
-
-export const spanerr: React.CSSProperties = styled.span`
-  color: red;
 `;

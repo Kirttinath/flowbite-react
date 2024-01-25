@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const Footerdiv = styled.div`
-  height: 10vh;
+  padding: 4rem 4rem;
+  display: block;
+  justify-content: flex-end;
+  /* height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,18 +15,19 @@ export const Footerdiv = styled.div`
   width: fit-content;
   @media screen and(min-width:280px) and (max-width: 1000px) {
     flex-direction: column;
-  }
+  } */
 `;
 
 export const Footleft = styled.div`
   display: flex;
-  margin-left: 40px;
+  flex-direction: column;
+  /* margin-left: 40px;
   @media screen and(min-width:280px) and (max-width: 1000px) {
     flex-direction: column;
-  }
+  } */
 `;
 export const Footright = styled.div`
-  margin-left: 970px;
+  margin-left: 1200px;
   display: flex;
   gap: 20px;
   width: 20px;

@@ -58,6 +58,9 @@ export const NavRight = styled.div`
   justify-content: center;
   align-items: center;
   gap: var(--2, 8px);
+  @media screen and(min-width:280px) and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 export const Button1 = styled.button`
   border-radius: var(--rounded-lg, 8px);
