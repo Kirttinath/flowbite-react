@@ -7,12 +7,11 @@ export const Footerdiv = styled.div`
   align-items: center;
   padding: 10px;
   color: gray;
+  flex-direction: row;
   position: absolute;
   width: fit-content;
-  @media screen {
-    .container {
-      padding: 0 3.2rem;
-    }
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 

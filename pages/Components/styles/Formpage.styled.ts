@@ -192,7 +192,6 @@ export const Login_Button = styled.button`
   border-radius: 8px;
   &:hover {
     background-color: #007bff;
-    transform: 0.3s ease-in-out;
   }
 `;
 

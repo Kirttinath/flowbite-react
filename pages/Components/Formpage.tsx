@@ -59,22 +59,20 @@ const Formpage = () => {
   // const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   // const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {};
 
-  // const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
-  //   if (data.email === "K@gmail.com" && data.password === "kirtti") {
-  //     console.log("Authenticated User");
-  //     console.log(data);
+  const SubmitData: SubmitHandler<Inputs> = (data: Inputs) => {
+    if (data.email === "K@gmail.com" && data.password === "kirtti") {
+      console.log("Authenticated User");
+      console.log(data);
+    } else throw new Error("Invalid Request");
+  };
 
-  //     Router.push("/Signin");
-  //   } else throw new Error("Invalid Request");
+  // const googleSignIn = () => {
+  //   signIn();
   // };
 
-  const googleSignIn = () => {
-    signIn();
-  };
-
-  const githubSignIn = () => {
-    signIn();
-  };
+  // const githubSignIn = () => {
+  //   signIn();
+  // };
 
   const {
     register,
@@ -139,16 +137,16 @@ const Formpage = () => {
             </TextArea>
           </Formleft>
           <Formright>
-            <Form onSubmit={googleSignIn}>
+            <Form onSubmit={handleSubmit(SubmitData)}>
               <FormHeading>Welcome Back</FormHeading>
               <SignUp>
-                <Googlebutton onClick={googleSignIn}>
+                <Googlebutton>
                   <Google>
                     <Image src={google} alt="Google icon" />
                   </Google>
                   Sign up with Google
                 </Googlebutton>
-                <Github_button onClick={githubSignIn}>
+                <Github_button>
                   <Github>
                     <Image src={github} alt="Git icon" />
                   </Github>

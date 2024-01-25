@@ -1,11 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@media screen {
-  .container {
-    padding: 0 3.2rem;
-  }
-}
+
 span {
   color: red;
+}
+
+@media screen and (max-width: 640px) {
+  .main {
+    padding: 0;
+  }
 }
