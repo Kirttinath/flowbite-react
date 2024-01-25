@@ -9,12 +9,15 @@ import {
   Button3,
 } from "./styles/Nav.styled";
 import logo from "../../public/f-logo.png";
-import { signOut, useSession } from "next-auth/react";
+import { signOut, signIn, useSession } from "next-auth/react";
 
 const Navbar = () => {
   const session = useSession();
   function signoutpg() {
     signOut();
+  }
+  function signinpage() {
+    signIn();
   }
   if (session?.data === null) {
     return (
@@ -33,7 +36,7 @@ const Navbar = () => {
           </Links>
         </Navleft>
         <NavRight>
-          <Button1>Log In</Button1>
+          <Button1 onClick={signinpage}>Log In</Button1>
           <Button2>Get Started</Button2>
         </NavRight>
       </Nav>
