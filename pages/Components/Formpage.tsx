@@ -24,7 +24,6 @@ import { Inputs, Label, Input } from "./styles/Formpage.styled";
 import { Remember, Rememberdiv, Input1, Tag } from "./styles/Formpage.styled";
 import { Forgot_Button, Login_Button } from "./styles/Formpage.styled";
 import { Account, Signup } from "./styles/Formpage.styled";
-
 import tickicon from "../../public/check.png";
 import logo from "../../public/f-logo.png";
 import google from "../../public/google.png";
@@ -42,6 +41,8 @@ import { Router, useRouter } from "next/router";
 // import { SubmitData } from "../Signin";
 import { log } from "console";
 import { useGoogleLogin } from "@react-oauth/google";
+import { useContext, useEffect } from "react";
+import { BlogContext } from "./Context/BlogContext";
 
 type Inputs = {
   email: string;
@@ -63,6 +64,9 @@ const Formpage = () => {
     },
   });
 
+  const [blogState, setBlogState] = useContext(BlogContext);
+  const {title} = blogState;
+
   const router = useRouter();
   // const session = useSession();
   /* The line `console.log("Session", session);` is logging the value of the `session` variable to the
@@ -79,6 +83,9 @@ const Formpage = () => {
       console.log(data);
     }
   };
+  useEffect(()=>{
+    setBlogState({title:"   Hello Blog"})
+  },[])
 
   // const googleSignIn = () => {
   //   signIn();
@@ -98,13 +105,13 @@ const Formpage = () => {
 
   // if (session?.data === null) {
   return (
-    <>
+    <div>
       <Formdiv>
         <Formleft>
           <Images>
             <Logo>
               <Imagesrc src={logo} alt="Flowbite logo" />
-              <Title>Flowbite</Title>
+              <Title>{title}{console.log(title)}</Title>
             </Logo>
           </Images>
 
@@ -224,7 +231,7 @@ const Formpage = () => {
           </Form>
         </Formright>
       </Formdiv>
-    </>
+    </div>
   );
   // } else {
   //   return (
